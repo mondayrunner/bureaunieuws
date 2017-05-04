@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<meta charset="utf-8">
+	<title>Bureaunieuws.nl</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">	
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/normalize.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/skeleton.css') }}">
+	<!-- <link rel="icon" type="image/png" href="images/favicon.png"> -->
+</head>
+<body>
+<div class="container">
+	{% block content %}
+	{% endblock %}
+</div>
+</body>
+</html>
