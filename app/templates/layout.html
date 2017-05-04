@@ -2,10 +2,10 @@
 <html lang="nl">
 <head>
 	<meta charset="utf-8">
-	<title>Bureaunieuws.nl</title>
+	<title>{{ title }} | Bureaunieuws.nl</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+
 	<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">	
 	<link rel="stylesheet" href="{{ url_for('static', filename='styles/normalize.css') }}">
 	<link rel="stylesheet" href="{{ url_for('static', filename='styles/skeleton.css') }}">
@@ -13,6 +13,15 @@
 </head>
 <body>
 <div class="container">
+
+	<nav class="navbar">
+		<div class="logo"><b>BureauNieuws.nl</b></div>
+		<ul class="navbar-list u-pull-right">
+			<li class="navbar-item"><a class="navbar-link" href="/">Overzicht</a></li>
+			<li class="navbar-item"><a class="navbar-link" href="/about">Over</a></li>
+		</ul>
+	</nav>
+
 	{% block content %}
 	{% endblock %}
 </div>
