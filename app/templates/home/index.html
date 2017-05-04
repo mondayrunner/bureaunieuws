@@ -4,6 +4,7 @@
 	<div class="row">
 		<div class="ten column">	
 			<!-- <h1>Laatste nieuws</h1> -->
+			{% if news %}
 			<table class="u-full-width">
 				<thead>
 					<tr>
@@ -14,14 +15,19 @@
 					</tr>
 				</thead>
 				<tbody>
+					{% for item in news %}
 					<tr>
-						<td><small>2 uur geleden</small></td>
-						<td>“We can’t wait to give it a try and see for ourselves!” Lees het blog van Marko, Mark en Robin over @ReactAmsterdam: <a href="http://bit.ly/2pln14M">http://bit.ly/2pln14M</a></td>
-						<td><a href="https://www.fabrique.nl">Fabrique</td>
-						<td><a href="https://twitter.com/fabrique">Twitter</a></td>
+						<td><small>{{ item.created_at }}</small></td>
+						<td>{{ item.headline }}</td>
+						<td><a href="https://www.url.nl">{{ item.company.name }}</td>
+						<td><a href="https://twitter.com/{{ item.company.twitter_handle }}">{{ item.medium }}</a></td>
 					</tr>
+					{% endfor %}
 				</tbody>
 			</table>
+  			{% else %}
+  				<p>Geen nieuws items gevonden.</p>
+			{% endif %}
 		</div>
 	</div>
 

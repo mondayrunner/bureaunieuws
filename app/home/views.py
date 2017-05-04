@@ -1,19 +1,18 @@
 # app/home/views.py
 
 from flask import render_template
-
 from . import home
+from .. import db
+from ..models import News
 
+# render homepage
 @home.route('/')
 def homepage():
-    """
-    Render the homepage template on the / route
-    """
-    return render_template('home/index.html', title="Overzicht")
+	news = News.query.all()
 
+	return render_template('home/index.html', news=news, title="Overzicht")
+
+# render about page
 @home.route('/about')
 def about():
-    """
-    Render the about page
-    """
-    return render_template('home/about.html', title="Over het platform")
+	return render_template('home/about.html', title="Over het platform")
