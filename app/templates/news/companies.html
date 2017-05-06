@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block content %}	
+	<div class="row">
+		<div class="ten column page">
+			<h1>Bureau overzicht</h1>
+			<p>Deze lijst is gesorteerd op alphabetische volgorde.</p>
+
+			{% if companies %}
+			<table class="u-full-width">
+				<thead>
+					<tr>
+						<th>Naam</th>
+						<th>Twitter</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for company in companies %}
+					<tr>						
+						<td>
+							<a href="#" class="permalink">{{ company.name }}</a>
+						</td>
+						<td>
+							<a href="https://www.twitter.com/{{ company.twitter_handle }}">@{{ company.twitter_handle }}</a>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+  			{% else %}
+  				<p>Geen bedrijven gevonden.</p>
+			{% endif %}
+		</div>
+	</div>
+
+{% endblock %}

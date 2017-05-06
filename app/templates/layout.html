@@ -15,11 +15,17 @@
 <div class="container">
 
 	<nav class="navbar">
-		<div class="logo"><b>BureauNieuws.nl</b></div>
+		<div class="logo"><a href="/"><b>BureauNieuws.nl</b></a></div>
 		<ul class="navbar-list u-pull-right">
-			<li class="navbar-item mobile-hide"><a class="navbar-link" href="/">nieuws</a></li>
-			<li class="navbar-item"><a class="navbar-link" href="/companies">bedrijven</a></li>
-			<li class="navbar-item"><a class="navbar-link" href="/about">over ons</a></li>
+			<li class="navbar-item mobile-hide{% if request.path == '/' %} active{% endif %}">
+				<a class="navbar-link" href="/">nieuws</a>
+			</li>
+			<li class="navbar-item{% if request.path == '/bureaus' %} active{% endif %}">
+				<a class="navbar-link" href="/bureaus">bureaus</a>
+			</li>
+			<li class="navbar-item{% if request.path == '/about' %} active{% endif %}">
+				<a class="navbar-link" href="/about">over ons</a>
+			</li>
 		</ul>
 	</nav>
 
