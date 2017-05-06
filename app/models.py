@@ -1,6 +1,7 @@
 # app/models.py
 
 from app import db
+from filters import timeago
 
 class News(db.Model):
 	id = db.Column(db.Integer, primary_key=True)	
@@ -26,6 +27,9 @@ class News(db.Model):
 
 	def __repr__(self):
 		return '<News %r>' % self.headline
+
+	def time_to_string(self):
+		return timeago(self.external_created_at)
 
 
 class Company(db.Model):

@@ -9,17 +9,18 @@
 					<tr>
 						<th class="mobile-hide"></th>
 						<th>Headline</th>
-						<th></th>
+						<th>Bureau</th>
 					</tr>
 				</thead>
 				<tbody>
 					{% for item in news.items %}
 					<tr>
-						<td class="mobile-hide"><small>{{ item.created_at }}</small></td>
+						<td class="timeago mobile-hide"><i><small>{{ item.time_to_string() }} <span class="from">geleden</span></small></i></td>
 						<td>
-							{{ item.headline }}<br>
+							<a href="#" class="permalink">{{ item.headline }}</a>
+
 							<small class="caption">
-								<span class="moble-show">{{ item.created_at }}</span>
+								<span class="mobile-show">{{ item.time_to_string() }}</span>
 								&mdash;
 								via 
 								<a href="https://twitter.com/{{ item.company.twitter_handle }}">{{ item.medium }}</a>

@@ -29,10 +29,6 @@ def create_app(config_name):
 	# models 
 	from app import models
 
-	# filters
-	import filters
-	app.register_blueprint(filters.blueprint)
-
 	# news blueprint
 	from .news import news as news_blueprint
 	app.register_blueprint(news_blueprint)

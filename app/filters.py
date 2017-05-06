@@ -1,47 +1,47 @@
 # app/filters.py
-import jinja2
-import flask
-import time
 from datetime import datetime
 
-blueprint = flask.Blueprint('filters', __name__)
+def timeago(dt, default="Nu geplaatst"):
 
-# using the decorator
-@jinja2.contextfilter
-@blueprint.app_template_filter()
-def timesince(dt, default="just now"):
+	#return repr(dt.hour)
+	#return repr(datetime.utcnow())
 
-	#print dt
-	"""
-	Returns string representing "time since" e.g.
-	3 days ago, 5 hours ago etc.
-	"""
+    now = datetime.now()
+    diff = now - dt
+    
+    periods = (
+        (diff.days / 365, "jaar", "jaren"),
+        (diff.days / 30, "maand", "maanden"),
+        (diff.days / 7, "week", "weken"),
+        (diff.days, "dag", "dagen"),
+        (diff.seconds / 3600, "uur", "uren"),
+        (diff.seconds / 60, "minuut", "minuten"),
+        (diff.seconds, "seconde", "seconden"),
+    )
 
-	#timestamp = datetime.strftime(dt, '%Y-%m-%d %H:%M:%S')
-	#dt = datetime.strptime(dt, f)
+    for period, singular, plural in periods:
+        
+        if period:
+            return "%d %s" % (period, singular if period == 1 else plural)
 
-	pattern = '%d-%m-%Y %H:%M:%S'
-	db_time = datetime.strptime(str(dt), pattern)	
-	return db_time
+    return default
 
-	#db_time = datetime.fromtimestamp(epoch)
 
-	now = datetime.utcnow()
-	diff = now - db_time
+
+# def string_to_data_time(d):
+
+# 	d = d.replace('/', '-')
+# 	if ' ' in d:
+# 		_datetime = d.split(' ')
+# 		if len(_datetime) == 2:
+# 			_d = _string_to_date(_datetime[0])
+# 			_t = _string_to_time(_datetime[1])
+# 			return _combine_date_time(_d, _t)
+
+# 	return None
+
+# def _combine_date_time(d, t):
+# 	if (d is not None) and (t is not None):
+# 		return datetime(d.year, d.month, d.day, t.hour, t.minute, t.second)
+# 	return None
 	
-	periods = (
-		(diff.days / 365, "year", "years"),
-		(diff.days / 30, "month", "months"),
-		(diff.days / 7, "week", "weeks"),
-		(diff.days, "day", "days"),
-		(diff.seconds / 3600, "hour", "hours"),
-		(diff.seconds / 60, "minute", "minutes"),
-		(diff.seconds, "second", "seconds"),
-	)
-
-	for period, singular, plural in periods:
-		
-		if period:
-			return "%d %s ago" % (period, singular if period == 1 else plural)
-
-	return default
