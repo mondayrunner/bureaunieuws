@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block content %}	
+	<div class="row">
+		<div class="ten column">	
+			{% if news %}
+			<table class="u-full-width">
+				<thead>
+					<tr>
+						<th class="mobile-hide"></th>
+						<th>Headline</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in news.items %}
+					<tr>
+						<td class="mobile-hide"><small>{{ item.created_at }}</small></td>
+						<td>
+							{{ item.headline }}<br>
+							<small class="caption">
+								<span class="moble-show">{{ item.created_at }}</span>
+								&mdash;
+								via 
+								<a href="https://twitter.com/{{ item.company.twitter_handle }}">{{ item.medium }}</a>
+							</small>
+						</td>
+						<td class="company">
+							<small>
+								<a href="https://www.url.nl">{{ item.company.name }}</a>
+							</small>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+  			{% else %}
+  				<p>Geen nieuws items gevonden.</p>
+			{% endif %}
+		</div>
+		<div class="row">
+			<div class="pagination u-pull-right">
+				{% if news.has_prev %}
+					<a href="{{ url_for('news.nieuws', page=news.prev_num) }}">
+						&lt;&lt; Nieuwer nieuws</a>
+					{% else %}
+						&lt;&lt; Nieuwer nieuws
+				{% endif %} | 
+
+				{% if news.has_next %}
+					<a href="{{ url_for('news.nieuws', page=news.next_num) }}">
+						Ouder nieuws &gt;&gt;</a>
+					{% else %}
+						Ouder nieuws &gt;&gt;
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

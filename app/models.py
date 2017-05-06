@@ -14,7 +14,7 @@ class News(db.Model):
 		backref=db.backref('news', lazy='dynamic'))
 
 	def __init__(self, headline, medium, company, external_created_at=None, created_at=None):
-		self.headline = title
+		self.headline = headline
 		self.medium = medium
 		if external_created_at is None:
 			external_created_at = datetime.utcnow()
@@ -25,7 +25,7 @@ class News(db.Model):
 		self.company = company
 
 	def __repr__(self):
-		return '<News %r>' % self.title
+		return '<News %r>' % self.headline
 
 
 class Company(db.Model):

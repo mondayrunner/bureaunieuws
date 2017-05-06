@@ -1,28 +1,28 @@
 # config.py
 
 class Config(object):
-    """
-    Common configurations
-    """
+	"""
+	Common configurations
+	"""
 
-    # Put any configurations here that are common across all environments
+	POSTS_PER_PAGE = 12
 
 class DevelopmentConfig(Config):
-    """
-    Development configurations
-    """
+	"""
+	Development configurations
+	"""
 
-    DEBUG = True
-    SQLALCHEMY_ECHO = True
+	DEBUG = True
+	SQLALCHEMY_ECHO = True
 
 class ProductionConfig(Config):
-    """
-    Production configurations
-    """
+	"""
+	Production configurations
+	"""
 
-    DEBUG = False
+	DEBUG = False
 
 app_config = {
-    'development': DevelopmentConfig,
-    'production': ProductionConfig
+	'development': DevelopmentConfig,
+	'production': ProductionConfig
 }

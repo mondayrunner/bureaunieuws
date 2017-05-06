@@ -121,10 +121,12 @@ are based on 10px sizing. So basically 1.5rem = 15px :) */
 html {
   font-size: 62.5%; }
 body {
-  font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
+  background-color: #F5F7F5;
+  font-size: 1.3em; /* currently ems cause chrome bug misinterpreting rems on body element */
   line-height: 1.6;
   font-weight: 400;
-  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /*font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  font-family: Verdana, Geneva, sans-serif;
   color: #222; }
 
 
@@ -428,6 +430,26 @@ ul.navbar-list li a {
 	padding: 3px 10px;
 }
 
+td.company {
+  vertical-align: top;
+}
+
+.mobile-hide {
+  display: none;
+}
+.mobile-show {
+  display: block;
+}
+
+.pagination {
+  padding-bottom: 30px;
+  color: #E1E1E1;
+}
+
+.caption {
+    color: #bfbdbd;
+}
+
 /* Media Queries
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 /*
@@ -445,7 +467,20 @@ there.
 @media (min-width: 550px) {}
 
 /* Larger than tablet */
-@media (min-width: 750px) {}
+@media (min-width: 750px) {
+
+  .mobile-hide {
+    display: block;
+  }
+  th.mobile-hide,
+  td.mobile-hide {
+    display: table-cell;
+  }
+
+  .mobile-show {
+    display: none;
+  }
+}
 
 /* Larger than desktop */
 @media (min-width: 1000px) {}

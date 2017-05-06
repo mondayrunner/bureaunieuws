@@ -26,12 +26,16 @@ def create_app(config_name):
 	# set migration
 	migrate = Migrate(app, db)
 	
-	# import models
+	# models 
 	from app import models
 
-	# home blueprint
-	from .home import home as home_blueprint
-	app.register_blueprint(home_blueprint)
+	# filters
+	import filters
+	app.register_blueprint(filters.blueprint)
+
+	# news blueprint
+	from .news import news as news_blueprint
+	app.register_blueprint(news_blueprint)
 
 	# from .admin import admin as admin_blueprint
 	# app.register_blueprint(admin_blueprint, url_prefix='/admin')
