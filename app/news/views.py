@@ -11,7 +11,6 @@ from flask import render_template
 @news.route('/nieuws', methods=['GET', 'POST'])
 @news.route('/nieuws/<int:page>', methods=['GET', 'POST'])
 def nieuws(page=1):
-
 	news = News.query.order_by(News.external_created_at.desc()).paginate(page, app.config['POSTS_PER_PAGE'], error_out=False)
 
 	return render_template('news/index.html', news=news, title="Overzicht")

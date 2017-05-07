@@ -416,6 +416,7 @@ ul.navbar-list li a {
 	float: left;
 	padding: 3px 10px;
 	color: #f2f2f2;
+  cursor: pointer;
 }
 ul.navbar-list li.active a,
 ul.navbar-list li a:hover {
